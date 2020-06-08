@@ -16,12 +16,14 @@ def consolidate_cart(cart)
     if consolidated_hash.has_key?(item_name_sym)
       consolidated_hash[item_name_sym][:count] += 1
     else
-      consolidated_hash[item_name_sym] = item_hash
+      consolidated_hash[item_name_sym] = item_hash.clone
       consolidated_hash[item_name_sym][:count] = 1
     end
   end
-
+  
   consolidated_array = consolidated_hash.values
+  # pp cart[0].object_id == consolidated_hash[:AVOCADO].object_id
+  # pp cart[0].object_id == consolidated_array[0].object_id
   return consolidated_array
 end
 
